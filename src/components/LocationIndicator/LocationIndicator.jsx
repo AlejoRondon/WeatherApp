@@ -1,7 +1,58 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
+import getCurrentLocation from '../../services/LocationService';
+import './LocationIndicator.css';
 function LocationIndicator() {
-  return <div className='section-name'>LocationIndicator</div>
+  const [current_location, SetCurrentLocation] = useState();
+
+  // useEffect(() => {
+  //   const getLocation = async () => {
+  //     try {
+  //       const position = await getCurrentLocation();
+  //       setLocation(position);
+  //     } catch (error) {
+  //       console.error('Error getting location:', error);
+  //     }
+  //   };
+
+  //   getLocation();
+
+  //   // Cleanup function to cancel any pending location requests
+  //   return () => {
+  //     // Implement cleanup if needed
+  //   };
+  // }, []); // Empty dependency array ensures this effect runs only once on mount
+
+  useEffect(() => {
+    getCurrentLocation()
+      .then((location) => {
+        console.log('Current location:', location);
+        SetCurrentLocation(location);
+      })
+      .catch((error) => {
+        console.error('Error getting location:', error);
+      });
+  }, []);
+
+  return (
+    <div className='LocationIndicator'>
+      {current_location ? (
+        <div>
+          <a
+            style={{ display: 'block', color: 'white', textAlign: 'center' }}
+            href={`https://maps.google.com?q=${current_location.latitude},${current_location.longitude}`}
+            target='blank'
+          >
+            <i className='fas fa-map-marker-alt'></i> {current_location.city}
+          </a>
+          <p style={{ textAlign: 'center' }}>
+            {current_location.latitude},{current_location.longitude}
+          </p>
+        </div>
+      ) : (
+        <p>Loading location...</p>
+      )}
+    </div>
+  );
 }
 
-export default LocationIndicator
+export default LocationIndicator;

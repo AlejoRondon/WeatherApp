@@ -1,10 +1,11 @@
-import './App.css'
-import './pages/WeatherToday/WeatherToday.css'
-import React from 'react'
-import './components/WeatherIcon/WeatherIcon.jsx'
-import WeatherTodayPage from './pages/WeatherToday/WeatherToday.jsx'
-import WeatherInfoPage from './pages/WeatherInfo/WeatherInfo.jsx'
-import SearchPage from './pages/Search/SearchPage.jsx'
+import './App.css';
+import './pages/WeatherToday/WeatherToday.css';
+import React from 'react';
+import './components/WeatherIcon/WeatherIcon.jsx';
+import WeatherTodayPage from './pages/WeatherToday/WeatherToday.jsx';
+import WeatherInfoPage from './pages/WeatherInfo/WeatherInfo.jsx';
+import SearchPage from './pages/Search/SearchPage.jsx';
+
 function App() {
   return (
     <main className='App'>
@@ -16,7 +17,7 @@ function App() {
         <WeatherInfoPage></WeatherInfoPage>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

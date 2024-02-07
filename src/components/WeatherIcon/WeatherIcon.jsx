@@ -1,16 +1,18 @@
-import ClearIcon from './icons/ClearIcon'
-import CloudAndRainnyIcon from './icons/CloudAndRainnyIcon'
-import CloudyIcon from './icons/CloudyIcon'
-import HeavyRainAndStormIcon from './icons/HeavyRainAndStormIcon'
-import NightClearIcon from './icons/NightClearIcon'
-import NightCloudyIcon from './icons/NightCloudyIcon'
-import NightFullmoonIcon from './icons/NightFullmoonIcon'
-import NightIcon from './icons/NightIcon'
-import NightRainIcon from './icons/NightRainIcon'
-import RainIcon from './icons/RainIcon'
-import SunnyIcon from './icons/SunnyIcon'
-import SunnyIcon2 from './icons/SunnyIcon2'
-import ThunderIcon from './icons/ThunderIcon'
+import React from 'react';
+
+import ClearIcon from './icons/ClearIcon';
+import CloudAndRainnyIcon from './icons/CloudAndRainnyIcon';
+import CloudyIcon from './icons/CloudyIcon';
+import HeavyRainAndStormIcon from './icons/HeavyRainAndStormIcon';
+import NightClearIcon from './icons/NightClearIcon';
+import NightCloudyIcon from './icons/NightCloudyIcon';
+import NightFullmoonIcon from './icons/NightFullmoonIcon';
+import NightIcon from './icons/NightIcon';
+import NightRainIcon from './icons/NightRainIcon';
+import RainIcon from './icons/RainIcon';
+import SunnyIcon from './icons/SunnyIcon';
+import SunnyIcon2 from './icons/SunnyIcon2';
+import ThunderIcon from './icons/ThunderIcon';
 
 export default function WeatherIcon({ type, style }) {
   return (
@@ -33,5 +35,5 @@ export default function WeatherIcon({ type, style }) {
         }[type]
       }
     </>
-  )
+  );
 }
