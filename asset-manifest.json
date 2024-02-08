@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/WeatherApp/static/css/main.4cdea182.css",
-    "main.js": "/WeatherApp/static/js/main.2e5935ab.js",
-    "static/js/592.cee8c3b9.chunk.js": "/WeatherApp/static/js/592.cee8c3b9.chunk.js",
-    "index.html": "/WeatherApp/index.html",
-    "main.4cdea182.css.map": "/WeatherApp/static/css/main.4cdea182.css.map",
-    "main.2e5935ab.js.map": "/WeatherApp/static/js/main.2e5935ab.js.map",
-    "592.cee8c3b9.chunk.js.map": "/WeatherApp/static/js/592.cee8c3b9.chunk.js.map"
+    "main.css": "/weather.alejorondon.com/static/css/main.4cdea182.css",
+    "main.js": "/weather.alejorondon.com/static/js/main.1cdc75b3.js",
+    "static/js/592.cee8c3b9.chunk.js": "/weather.alejorondon.com/static/js/592.cee8c3b9.chunk.js",
+    "index.html": "/weather.alejorondon.com/index.html",
+    "main.4cdea182.css.map": "/weather.alejorondon.com/static/css/main.4cdea182.css.map",
+    "main.1cdc75b3.js.map": "/weather.alejorondon.com/static/js/main.1cdc75b3.js.map",
+    "592.cee8c3b9.chunk.js.map": "/weather.alejorondon.com/static/js/592.cee8c3b9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4cdea182.css",
-    "static/js/main.2e5935ab.js"
+    "static/js/main.1cdc75b3.js"
   ]
 }
