@@ -1,4 +1,14 @@
 .LocationIndicator {
-  padding: 0.5em;
+  padding: 1em 0 2em 0;
   border: dotted 1px white;
+}
+
+div.LocationIndicator a {
+  color: #88869d;
+  font-size: 18px;
+}
+
+div.LocationIndicator p {
+  color: #88869d;
+  font-size: 18px;
 }

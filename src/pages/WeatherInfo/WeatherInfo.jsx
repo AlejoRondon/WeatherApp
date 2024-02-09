@@ -1,11 +1,11 @@
-import React from 'react'
-import './WeatherInfo.css'
-import RoundButton from '../../components/RoundButton/RoundButton'
-import WeatherCardsContainer from '../../components/WeatherCardsContainer/WeatherCardsContainer'
-import WeatherCard from '../../components/WeatherCard/WeatherCard'
-import HighlightsContainer from '../../components/HighlightsContainer/HighlightsContainer'
-import HighlightCard from '../../components/HighlightCard/HighlightCard'
-import Footer from '../../components/Footer/Footer'
+import React from 'react';
+import './WeatherInfo.css';
+import RoundButton from '../../components/RoundButton/RoundButton';
+import WeatherCardsContainer from '../../components/WeatherCardsContainer/WeatherCardsContainer';
+import WeatherCard from '../../components/WeatherCard/WeatherCard';
+import HighlightsContainer from '../../components/HighlightsContainer/HighlightsContainer';
+import HighlightCard from '../../components/HighlightCard/HighlightCard';
+import Footer from '../../components/Footer/Footer';
 export default function WeatherInfo() {
   return (
     <div className='WeatherInfo'>
@@ -26,5 +26,5 @@ export default function WeatherInfo() {
       </HighlightsContainer>
       <Footer></Footer>
     </div>
-  )
+  );
 }

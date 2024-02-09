@@ -1,0 +1,20 @@
+.SearchInput {
+  background-color: #6e707a;
+  line-height: 18px;
+  font-size: 16px;
+  color: #e7e7eb;
+  padding: 0.5em;
+  border: none;
+  width: 60%;
+}
+
+::placeholder {
+  color: #e7e7eb;
+  opacity: 0.5; /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #e7e7eb;
+  opacity: 0.5; /* Firefox */
+}

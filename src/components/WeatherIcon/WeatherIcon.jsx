@@ -13,25 +13,25 @@ import RainIcon from './icons/RainIcon';
 import SunnyIcon from './icons/SunnyIcon';
 import SunnyIcon2 from './icons/SunnyIcon2';
 import ThunderIcon from './icons/ThunderIcon';
-
+import './WeatherIcon.css';
 export default function WeatherIcon({ type, style }) {
   return (
     <>
       {
         {
-          ClearIcon: <ClearIcon style={style} />,
-          CloudAndRainnyIcon: <CloudAndRainnyIcon style={style} />,
-          CloudyIcon: <CloudyIcon style={style} />,
-          HeavyRainAndStormIcon: <HeavyRainAndStormIcon style={style} />,
-          NightClearIcon: <NightClearIcon style={style} />,
-          NightCloudyIcon: <NightCloudyIcon style={style} />,
-          NightFullmoonIcon: <NightFullmoonIcon style={style} />,
-          NightIcon: <NightIcon style={style} />,
-          NightRainIcon: <NightRainIcon style={style} />,
-          RainIcon: <RainIcon style={style} />,
-          SunnyIcon: <SunnyIcon style={style} />,
-          SunnyIcon2: <SunnyIcon2 style={style} />,
-          ThunderIcon: <ThunderIcon style={style} />,
+          ClearIcon: <ClearIcon className='WeatherIcon' style={style} />,
+          CloudAndRainnyIcon: <CloudAndRainnyIcon className='WeatherIcon' style={style} />,
+          CloudyIcon: <CloudyIcon className='WeatherIcon' style={style} />,
+          HeavyRainAndStormIcon: <HeavyRainAndStormIcon className='WeatherIcon' style={style} />,
+          NightClearIcon: <NightClearIcon className='WeatherIcon' style={style} />,
+          NightCloudyIcon: <NightCloudyIcon className='WeatherIcon' style={style} />,
+          NightFullmoonIcon: <NightFullmoonIcon className='WeatherIcon' style={style} />,
+          NightIcon: <NightIcon className='WeatherIcon' style={style} />,
+          NightRainIcon: <NightRainIcon className='WeatherIcon' style={style} />,
+          RainIcon: <RainIcon className='WeatherIcon' style={style} />,
+          SunnyIcon: <SunnyIcon className='WeatherIcon' style={style} />,
+          SunnyIcon2: <SunnyIcon2 className='WeatherIcon' style={style} />,
+          ThunderIcon: <ThunderIcon className='WeatherIcon' style={style} />,
         }[type]
       }
     </>

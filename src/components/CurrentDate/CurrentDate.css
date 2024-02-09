@@ -1,0 +1,9 @@
+.CurrentDate {
+  border: dotted 1px white;
+}
+
+.date {
+  text-align: center;
+  color: #88869d;
+  font-size: 18px;
+}

@@ -11,8 +11,9 @@ export default function getCurrentLocation() {
           fetch(url)
             .then((response) => response.json())
             .then((data) => {
+              console.log(data);
               // Parse the city name from the API response
-              const city = data.results[0].address_components[1].long_name;
+              const city = data.results[0].address_components[0].long_name;
               resolve({
                 city,
                 latitude: position.coords.latitude,

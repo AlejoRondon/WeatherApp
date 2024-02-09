@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './WeatherDescription.css';
 
 function WeatherDescription() {
-  return <div className='section-name'>WeatherDescription</div>
+  return (
+    <div className='WeatherDescription'>
+      <p>Shower</p>
+    </div>
+  );
 }
 
-export default WeatherDescription
+export default WeatherDescription;

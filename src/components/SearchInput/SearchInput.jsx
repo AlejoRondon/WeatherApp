@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './SearchInput.css';
 
 function SearchInput() {
-  return <div className='section-name'>SearchInput</div>
+  return <input className='SearchInput' type='text' placeholder='Search for places'></input>;
 }
 
-export default SearchInput
+export default SearchInput;

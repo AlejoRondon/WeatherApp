@@ -1,0 +1,15 @@
+.TemperatureIndicator {
+  padding: 2em 0.5em;
+  border: dotted 1px white;
+}
+
+.TemperatureIndicator p {
+  text-align: center;
+  font-size: 144px;
+  color: #e7e7eb;
+}
+
+.TemperatureIndicator p span {
+  color: #a09fb1;
+  font-size: 44px;
+}

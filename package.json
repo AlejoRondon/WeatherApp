@@ -2,7 +2,6 @@
   "name": "weather_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AlejoRondon.github.io/WeatherApp",
   "dependencies": {
     "-": "^0.0.1",
     "@testing-library/jest-dom": "^5.17.0",

@@ -4,24 +4,6 @@ import './LocationIndicator.css';
 function LocationIndicator() {
   const [current_location, SetCurrentLocation] = useState();
 
-  // useEffect(() => {
-  //   const getLocation = async () => {
-  //     try {
-  //       const position = await getCurrentLocation();
-  //       setLocation(position);
-  //     } catch (error) {
-  //       console.error('Error getting location:', error);
-  //     }
-  //   };
-
-  //   getLocation();
-
-  //   // Cleanup function to cancel any pending location requests
-  //   return () => {
-  //     // Implement cleanup if needed
-  //   };
-  // }, []); // Empty dependency array ensures this effect runs only once on mount
-
   useEffect(() => {
     getCurrentLocation()
       .then((location) => {
@@ -36,9 +18,9 @@ function LocationIndicator() {
   return (
     <div className='LocationIndicator'>
       {current_location ? (
-        <div>
+        <>
           <a
-            style={{ display: 'block', color: 'white', textAlign: 'center' }}
+            style={{ display: 'block', textAlign: 'center' }}
             href={`https://maps.google.com?q=${current_location.latitude},${current_location.longitude}`}
             target='blank'
           >
@@ -47,7 +29,7 @@ function LocationIndicator() {
           <p style={{ textAlign: 'center' }}>
             {current_location.latitude},{current_location.longitude}
           </p>
-        </div>
+        </>
       ) : (
         <p>Loading location...</p>
       )}

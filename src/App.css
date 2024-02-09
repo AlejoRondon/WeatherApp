@@ -3,13 +3,13 @@ html {
   font-family: 'Raleway';
   color: white;
   height: 100vh;
-  width: 100wh;
+  width: 100vw;
 }
 .App {
   display: grid;
   grid-template-columns: 1fr 3fr;
   height: 100vh;
-  width: 100wh;
+  width: 100vw;
 }
 
 #primary-section {
