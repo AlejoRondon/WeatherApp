@@ -1,4 +1,13 @@
 .HighlightsContainer {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  /* padding: 1m; */
+  width: 70%;
+  /* border: 1px dotted white; */
+  /* grid-column-gap: 16px; */
+  grid-row-gap: 16px;
+  /* justify-content: center; */
+  justify-items: center;
 }

@@ -9,8 +9,10 @@ import Footer from '../../components/Footer/Footer';
 export default function WeatherInfo() {
   return (
     <div className='WeatherInfo'>
-      <RoundButton>°C</RoundButton>
-      <RoundButton>°F</RoundButton>
+      <div className='temperature_buttons'>
+        <RoundButton>°F</RoundButton>
+        <RoundButton>°C</RoundButton>
+      </div>
       <WeatherCardsContainer>
         <WeatherCard></WeatherCard>
         <WeatherCard></WeatherCard>
@@ -19,10 +21,10 @@ export default function WeatherInfo() {
         <WeatherCard></WeatherCard>
       </WeatherCardsContainer>
       <HighlightsContainer>
-        <HighlightCard></HighlightCard>
-        <HighlightCard></HighlightCard>
-        <HighlightCard></HighlightCard>
-        <HighlightCard></HighlightCard>
+        <HighlightCard title='Wind status' value='7' units='mph'></HighlightCard>
+        <HighlightCard title='Humidity' value='84' units='%'></HighlightCard>
+        <HighlightCard title='Visibility' value='6,4' units='miles'></HighlightCard>
+        <HighlightCard title='Air Pressure' value='998' units='mb'></HighlightCard>
       </HighlightsContainer>
       <Footer></Footer>
     </div>

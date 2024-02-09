@@ -15,6 +15,7 @@ import SunnyIcon2 from './icons/SunnyIcon2';
 import ThunderIcon from './icons/ThunderIcon';
 import './WeatherIcon.css';
 export default function WeatherIcon({ type, style }) {
+  type = type ? type : 'ClearIcon';
   return (
     <>
       {

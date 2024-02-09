@@ -1,6 +1,6 @@
 .TemperatureIndicator {
   padding: 2em 0.5em;
-  border: dotted 1px white;
+  /* border: dotted 1px white; */
 }
 
 .TemperatureIndicator p {

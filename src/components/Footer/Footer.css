@@ -1,0 +1,12 @@
+.Footer {
+  color: #a09fb1;
+  margin: 1em 0;
+}
+
+.Footer p {
+  font-size: 14px;
+}
+
+.Footer p span {
+  font-weight: 800;
+}
