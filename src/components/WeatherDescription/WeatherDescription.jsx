@@ -1,10 +1,10 @@
 import React from 'react';
 import './WeatherDescription.css';
 
-function WeatherDescription() {
+function WeatherDescription({ description }) {
   return (
     <div className='WeatherDescription'>
-      <p>Shower</p>
+      <p>{description ? description : '------'}</p>
     </div>
   );
 }

@@ -1,24 +1,36 @@
 export default function getCurrentDate() {
   // Create a new Date object
-  var currentDate = new Date();
+  var currentDate = Date.now();
+  return unixTimeConverter(currentDate);
+}
+
+export function unixTimeConverter(unix_timestamp) {
+  var date_to_convert = new Date(unix_timestamp);
 
   // Array of month names
-  var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   // Array of day names
-  var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  // Get the day, month, and year
-  var day = currentDate.getDate();
-  var monthIndex = currentDate.getMonth();
-  var year = currentDate.getFullYear();
+  var day = date_to_convert.getDate();
+  var month_index = date_to_convert.getMonth();
+  var year = date_to_convert.getFullYear();
 
-  // Get the day name
-  var dayNameIndex = currentDate.getDay();
-  var dayName = dayNames[dayNameIndex];
+  var day_name_index = date_to_convert.getDay();
+  var day_name = day_names[day_name_index];
 
-  // Format the date
-  var formattedDate = dayName + ', ' + day + ' ' + monthNames[monthIndex] + ', ' + year;
+  var month_name = month_names[month_index];
 
-  return formattedDate;
+  var hour = date_to_convert.getHours();
+  var min = date_to_convert.getMinutes();
+  var sec = date_to_convert.getSeconds();
+  return {
+    day,
+    month: month_index + 1,
+    year,
+    long_date_str: day_name + ', ' + day + ' ' + month_name + ' ' + year,
+    short_date_str: day_name + ', ' + day + ' ' + month_name,
+    time_str: hour + ':' + min + ':' + sec,
+  };
 }

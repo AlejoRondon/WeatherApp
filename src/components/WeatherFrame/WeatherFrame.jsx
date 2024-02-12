@@ -1,10 +1,15 @@
 import React from 'react';
 import './WeatherFrame.css';
-import WeatherIcon from '../../components/WeatherIcon/WeatherIcon';
-function WeatherFrame() {
+// import WeatherIcon from '../../components/WeatherIcon/WeatherIcon';
+function WeatherFrame({ weather }) {
   return (
     <div className='WeatherFrame'>
-      <WeatherIcon style={{ width: '90%' }} type='CloudAndRainnyIcon'></WeatherIcon>
+      {weather ? (
+        <img src={`https://openweathermap.org/img/wn/${weather.icon}@4x.png`} />
+      ) : (
+        <p>Loading weather image...</p>
+      )}
+
       <div id='background-wrap'>
         <div className='x1'>
           <div className='cloud'></div>

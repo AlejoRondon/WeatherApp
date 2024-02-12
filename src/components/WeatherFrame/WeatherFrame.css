@@ -17,6 +17,10 @@
   opacity: 0.08;
 }
 
+.WeatherFrame img {
+  width: 90%;
+}
+
 /* KEYFRAMES */
 
 @-webkit-keyframes animateCloud {

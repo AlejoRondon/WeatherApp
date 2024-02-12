@@ -13,3 +13,20 @@
   color: #a09fb1;
   font-size: 44px;
 }
+
+.max_min_temp_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 2em 0.5em;
+  /* background-color: aliceblue; */
+}
+
+.TemperatureIndicator p.max_temp {
+  font-size: 30px;
+  /* color: #a09fb1; */
+}
+.TemperatureIndicator p.min_temp {
+  font-size: 30px;
+  color: #a09fb1;
+}
