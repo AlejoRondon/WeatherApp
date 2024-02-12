@@ -5,22 +5,35 @@ export default function getCurrentLocation() {
     } else {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // Make a request to a Geocoding API (e.g. Google Maps Geocoding API)
-          const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${process.env.REACT_APP_MAPS_API}`;
+          const url1 = `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${process.env.REACT_APP_WEATHER_API}`;
 
-          fetch(url)
+          fetch(url1)
             .then((response) => response.json())
             .then((data) => {
               console.log(data);
               // Parse the city name from the API response
-              const city = data.results[0].address_components[0].long_name;
+              // const city = data[0].name;
               resolve({
-                city,
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
+                ...data[0],
               });
             })
             .catch((error) => reject(error));
+
+          // Make a request to a Geocoding API (e.g. Google Maps Geocoding API)
+          // const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${process.env.REACT_APP_MAPS_API}`;
+          // fetch(url)
+          //   .then((response) => response.json())
+          //   .then((data) => {
+          //     console.log(data);
+          //     // Parse the city name from the API response
+          //     const city = data.results[0].address_components[0].long_name;
+          //     resolve({
+          //       city,
+          //       latitude: position.coords.latitude,
+          //       longitude: position.coords.longitude,
+          //     });
+          //   })
+          //   .catch((error) => reject(error));
         },
         (error) => {
           reject(error);

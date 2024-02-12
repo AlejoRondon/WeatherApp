@@ -21,13 +21,14 @@ function LocationIndicator() {
         <>
           <a
             style={{ display: 'block', textAlign: 'center' }}
-            href={`https://maps.google.com?q=${current_location.latitude},${current_location.longitude}`}
+            href={`https://maps.google.com?q=${current_location.lat},${current_location.lon}`}
             target='blank'
           >
-            <i className='fas fa-map-marker-alt'></i> {current_location.city}
+            <i className='fas fa-map-marker-alt'></i>{' '}
+            {`${current_location.name}, ${current_location.state}, ${current_location.country}`}
           </a>
           <p style={{ textAlign: 'center' }}>
-            {current_location.latitude},{current_location.longitude}
+            {current_location.lat},{current_location.lon}
           </p>
         </>
       ) : (
