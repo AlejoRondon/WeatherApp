@@ -1,6 +1,6 @@
 .WeatherCardsContainer {
   display: flex;
-  justify-content: space-between;
-  width: 60%;
+  justify-content: center;
+  width: 90%;
   /* border: 1px dotted white; */
 }

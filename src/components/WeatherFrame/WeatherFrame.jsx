@@ -1,6 +1,6 @@
 import React from 'react';
 import './WeatherFrame.css';
-// import WeatherIcon from '../../components/WeatherIcon/WeatherIcon';
+
 function WeatherFrame({ weather }) {
   return (
     <div className='WeatherFrame'>

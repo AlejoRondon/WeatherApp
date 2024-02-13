@@ -36,36 +36,39 @@ function App() {
           console.log('Weather, today: ', today_weather);
           SetCurrentWeather(today_weather);
         } catch (error) {
-          console.error('Error getting location: ', error);
+          console.error("Error getting Today's", error);
         }
       }
     })();
   }, [current_location]);
-
-  useEffect(() => {}, [current_weather]);
 
   useEffect(() => {
     (async () => {
       if (current_location) {
         try {
           let next_days_weather = await fetchNextDaysWeather(current_location);
+          next_days_weather = next_days_weather.list.filter((e) => {
+            return e.dt_txt.includes('18:00:00');
+          });
+          next_days_weather = next_days_weather.map((e) => {
+            return {
+              dt: unixTimeConverter(e.dt * 1000),
+              weather: e.weather[0].main,
+              description: e.weather[0].description,
+              temp_max: e.main.temp_max,
+              temp_min: e.main.temp_min,
+              icon: e.weather[0].icon,
+            };
+          });
+
           console.log('Weather, next 5 days: ', next_days_weather);
           SetNextDaysWeather(next_days_weather);
         } catch (error) {
-          console.error('Error getting location: ', error);
+          console.error('Error getting Next 5 days weather', error);
         }
       }
     })();
   }, [current_location]);
-
-  useEffect(() => {
-    // console.log(next_days_weather);
-    // if (next_days_weather) {
-    //   next_days_weather.list.map((v, i) => {
-    //     console.log(v, i);
-    //   });
-    // }
-  }, [next_days_weather]);
 
   useEffect(() => {
     let current_date = getCurrentDate();
@@ -84,7 +87,10 @@ function App() {
         <SearchPage style={{ display: 'none' }}></SearchPage>
       </section>
       <section id='secondary-section'>
-        <WeatherInfoPage></WeatherInfoPage>
+        <WeatherInfoPage
+          weather={current_weather}
+          next_days_weather={next_days_weather ? next_days_weather : null}
+        ></WeatherInfoPage>
       </section>
     </main>
   );

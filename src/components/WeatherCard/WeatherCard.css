@@ -2,9 +2,11 @@
   /* background-color: aliceblue; */
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  /* justify-content: center; */
-  padding: 1em;
+  justify-content: center;
+  /* padding: 1em; */
+  gap: 1em;
   /* border: 1px dashed cadetblue; */
   background-color: #1e213a;
 }
@@ -18,4 +20,8 @@
 
 .min_temp {
   color: #a09fb1;
+}
+
+.WeatherCard img {
+  width: 150px;
 }

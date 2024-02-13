@@ -6,7 +6,7 @@ function HighlightCard({ title, value, units }) {
     <div className='HighlightCard'>
       <p>{title}</p>
       <p className='number'>
-        {value}
+        {value ? value : '--'}
         <span className='units'>{units}</span>
       </p>
     </div>
