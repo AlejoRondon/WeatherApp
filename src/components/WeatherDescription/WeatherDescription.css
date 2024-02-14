@@ -1,6 +1,10 @@
 .WeatherDescription {
-  padding: 2em 0.5em;
-  /* border: dotted 1px white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em 0;
+  border: dotted 1px white;
+  height: 15%;
 }
 
 .WeatherDescription p {

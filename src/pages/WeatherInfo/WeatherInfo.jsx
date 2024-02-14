@@ -1,14 +1,15 @@
 import React from 'react';
 import './WeatherInfo.css';
-import RoundButton from '../../components/RoundButton/RoundButton';
+// import RoundButton from '../../components/RoundButton/RoundButton';
 import WeatherCardsContainer from '../../components/WeatherCardsContainer/WeatherCardsContainer';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import HighlightsContainer from '../../components/HighlightsContainer/HighlightsContainer';
 import HighlightCard from '../../components/HighlightCard/HighlightCard';
 import Footer from '../../components/Footer/Footer';
-export default function WeatherInfo({ weather, next_days_weather }) {
+import ToggleSwitch from '../../components/ToggleSwitch/ToggleSwitch';
+export default function WeatherInfo({ weather, next_days_weather, onChangeToggleSwitch, temp_units }) {
   const next_days_weather_elements = next_days_weather ? (
-    next_days_weather.map((e, i) => <WeatherCard key={i} weather={e}></WeatherCard>)
+    next_days_weather.map((e, i) => <WeatherCard key={i} weather={e} temp_units={temp_units}></WeatherCard>)
   ) : (
     <>
       <p>Loading...</p>
@@ -18,10 +19,9 @@ export default function WeatherInfo({ weather, next_days_weather }) {
   return (
     <div className='WeatherInfo'>
       <div className='temperature_buttons'>
-        <RoundButton>°F</RoundButton>
-        <RoundButton>°C</RoundButton>
+        <ToggleSwitch label='Units' onChangeToggleSwitch={onChangeToggleSwitch} temp_units={temp_units}></ToggleSwitch>
       </div>
-      <WeatherCardsContainer>{next_days_weather_elements}</WeatherCardsContainer>
+      <WeatherCardsContainer temp_units={temp_units}>{next_days_weather_elements}</WeatherCardsContainer>
       <HighlightsContainer>
         <HighlightCard title='Wind status' value={weather ? weather.wind.speed : null} units='mps'></HighlightCard>
         <HighlightCard title='Humidity' value={weather ? weather.main.humidity : null} units='%'></HighlightCard>

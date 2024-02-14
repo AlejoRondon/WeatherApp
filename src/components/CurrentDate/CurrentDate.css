@@ -1,9 +1,14 @@
 .CurrentDate {
-  /* border: dotted 1px white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em 0;
+  border: dotted 1px white;
+  height: 5%;
 }
 
 .date {
   text-align: center;
   color: #88869d;
-  font-size: 18px;
+  font-size: 1.5em;
 }

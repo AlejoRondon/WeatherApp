@@ -1,7 +1,10 @@
 .SearchBar {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 2em;
-  /* border: dotted 1px white; */
+  padding: 0 2em;
+  border: dotted 1px white;
+  height: 10vh;
+  z-index: 2;
 }

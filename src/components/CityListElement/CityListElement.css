@@ -1,0 +1,18 @@
+.CityListElement {
+  position: relative;
+  padding: 1em;
+  margin: 0.5em 0;
+}
+
+.CityListElement:hover {
+  border: solid 1px #616475;
+}
+
+.CityListElement:hover::after {
+  position: absolute;
+  content: '>';
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #616475;
+}

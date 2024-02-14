@@ -1,14 +1,18 @@
 .LocationIndicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 1em 0 2em 0;
-  /* border: dotted 1px white; */
+  border: dotted 1px white;
+  height: 15%;
 }
 
 div.LocationIndicator a {
   color: #88869d;
-  font-size: 18px;
+  font-size: 1.25em;
 }
 
 div.LocationIndicator p {
   color: #88869d;
-  font-size: 18px;
+  font-size: 1.25em;
 }

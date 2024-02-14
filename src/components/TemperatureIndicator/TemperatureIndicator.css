@@ -1,11 +1,15 @@
 .TemperatureIndicator {
-  padding: 2em 0.5em;
-  /* border: dotted 1px white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2em;
+  border: dotted 1px white;
+  height: 25%;
 }
 
 .TemperatureIndicator p {
   text-align: center;
-  font-size: 144px;
+  font-size: 110px;
   color: #e7e7eb;
 }
 
