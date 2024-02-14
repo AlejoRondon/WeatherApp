@@ -1,43 +1,82 @@
 import './App.css';
 import './pages/WeatherToday/WeatherToday.css';
 import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line
 import WeatherTodayPage from './pages/WeatherToday/WeatherToday.jsx';
 import WeatherInfoPage from './pages/WeatherInfo/WeatherInfo.jsx';
 // eslint-disable-next-line
-import SearchPage from './pages/Search/SearchPage.jsx';
-import fetchCurrentLocation from './services/LocationService';
-// eslint-disable-next-line
+import fetchCurrentLocation, { fetchLocationByCoord } from './services/LocationService';
 import SearchBar from './components/SearchBar/SearchBar';
-// eslint-disable-next-line
 import CloudsBackground from './components/CloudsBackground/CloudsBackground.jsx';
-// eslint-disable-next-line
 import getCurrentDate, { unixTimeConverter } from './services/DateService';
-import fetchCurrentWeather, { fetchNextDaysWeather } from './services/WeatherService';
+import fetchCurrentWeather, { fetchNextDaysWeather, fetchCurrentWeatherById } from './services/WeatherService';
+import CityList from './components/CityList/CityList.jsx';
 // eslint-disable-next-line
-import { Country, State, City } from 'country-state-city';
-// console.log(Country.getAllCountries());
-// console.log(State.getAllStates());
-console.log(City.getAllCities());
-// import cities from 'all-the-cities';
 
 function App() {
   const [temp_units, SetTempUnits] = useState(true); //true: °C false: °F
-  const [current_location, SetCurrentLocation] = useState();
+  const [shown_location, setShownLocation] = useState();
+  // eslint-disable-next-line
+  const [current_location, setCurrentLocation] = useState();
+  // eslint-disable-next-line
+  const [searched_city_location, setSearchedCityLocation] = useState();
   const [current_weather, SetCurrentWeather] = useState();
   const [next_days_weather, SetNextDaysWeather] = useState();
   const [date, setDate] = useState();
-  // eslint-disable-next-line
-  const [cities, setCities] = useState([]);
+  const [search_str, setSearchStr] = useState('');
+  const [searched_city, setSearchedCity] = useState();
 
   const handleChangeToggleSwitch = () => SetTempUnits((prev) => !prev);
+  const handleChangeSearchInput = (e) => {
+    setSearchStr(e.target.value);
+  };
+  const handleKeyPressDownSearchInput = (e) => {
+    if (e.keyCode === 13 || e.keyCode === 27) {
+      console.log('Enter key pressed');
+      setSearchStr('');
+    }
+  };
+
+  const handleClickCityItem = (e) => {
+    setSearchedCity({ name: e.target.innerText, code: e.target.getAttribute('code') });
+    setSearchStr('');
+  };
+
+  // eslint-disable-next-line
+  const handleCurrentLocationClick = () => {
+    console.log('going to current location');
+    setShownLocation(current_location);
+  };
+
+  useEffect(() => {
+    // console.log(search_str);
+  }, [search_str]);
+
+  useEffect(() => {
+    console.log(searched_city);
+    (async () => {
+      if (searched_city) {
+        try {
+          let today_weather = await fetchCurrentWeatherById(searched_city.code);
+          console.log('Weather, id: ', today_weather);
+          fetchLocationByCoord(today_weather.coord).then((data) => {
+            console.log(data[0]);
+            setSearchedCityLocation(data[0]);
+            setShownLocation(data[0]);
+          });
+        } catch (error) {
+          console.error("Error getting Today's", error);
+        }
+      }
+    })();
+  }, [searched_city]);
 
   useEffect(() => {
     (async () => {
       try {
         let location = await fetchCurrentLocation();
         console.log('Current location: ', location);
-        SetCurrentLocation(location);
+        setShownLocation(location);
+        setCurrentLocation(location);
       } catch (error) {
         console.error('Error getting location: ', error);
       }
@@ -46,9 +85,9 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      if (current_location) {
+      if (shown_location) {
         try {
-          let today_weather = await fetchCurrentWeather(current_location);
+          let today_weather = await fetchCurrentWeather(shown_location);
           console.log('Weather, today: ', today_weather);
           SetCurrentWeather(today_weather);
         } catch (error) {
@@ -56,13 +95,13 @@ function App() {
         }
       }
     })();
-  }, [current_location]);
+  }, [shown_location]);
 
   useEffect(() => {
     (async () => {
-      if (current_location) {
+      if (shown_location) {
         try {
-          let next_days_weather = await fetchNextDaysWeather(current_location);
+          let next_days_weather = await fetchNextDaysWeather(shown_location);
           next_days_weather = next_days_weather.list.filter((e) => {
             return e.dt_txt.includes('18:00:00');
           });
@@ -84,7 +123,7 @@ function App() {
         }
       }
     })();
-  }, [current_location]);
+  }, [shown_location]);
 
   useEffect(() => {
     let current_date = getCurrentDate();
@@ -114,15 +153,20 @@ function App() {
     <main className='App'>
       <section id='primary-section'>
         <CloudsBackground></CloudsBackground>
-        <SearchBar></SearchBar>
+        <SearchBar
+          search_str={search_str}
+          onChangeSearch={handleChangeSearchInput}
+          onKeyPressSearch={handleKeyPressDownSearchInput}
+          onClickCurrentLocation={handleCurrentLocationClick}
+        ></SearchBar>
+        <CityList search_str={search_str} onClickCityItem={handleClickCityItem}></CityList>
         <WeatherTodayPage
-          style={{ display: 'none' }}
+          // style={{ display: 'none' }}
           weather={current_weather}
           date={date}
-          location={current_location}
+          location={shown_location}
           temp_units={temp_units}
         ></WeatherTodayPage>
-        <SearchPage></SearchPage>
       </section>
       <section id='secondary-section'>
         <WeatherInfoPage

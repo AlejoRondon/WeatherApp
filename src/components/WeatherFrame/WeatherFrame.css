@@ -1,6 +1,6 @@
 .WeatherFrame {
   position: relative;
-  border: dotted 1px white;
+  /* border: dotted 1px white; */
   display: flex;
   justify-content: center;
   align-items: center;

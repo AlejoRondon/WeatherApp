@@ -11,7 +11,7 @@ function LocationIndicator({ location }) {
             href={`https://maps.google.com?q=${location.lat},${location.lon}`}
             target='blank'
           >
-            <i className='fas fa-map-marker-alt'></i> {`${location.name}, ${location.state}, ${location.country}`}
+            <i className='fas fa-map-marker-alt'></i> {`${location.name}, ${location.country}`}
           </a>
           <p style={{ textAlign: 'center' }}>
             {location.lat},{location.lon}

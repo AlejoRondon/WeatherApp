@@ -1,10 +1,12 @@
 import React from 'react';
 import './CityListElement.css';
 
-function CityListElement({ name }) {
+function CityListElement({ city_name, onClickCityItem, code }) {
   return (
     <div className='CityListElement'>
-      <li>{name}</li>
+      <li onClick={onClickCityItem} code={code}>
+        {city_name}
+      </li>
     </div>
   );
 }

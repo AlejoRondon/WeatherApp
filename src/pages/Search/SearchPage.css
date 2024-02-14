@@ -1,7 +1,7 @@
 .SearchPage {
   position: relative;
   height: 90vh;
-  border: 1px dodgerblue dotted;
+  /* border: 1px dodgerblue dotted; */
   z-index: 2;
   overflow-y: scroll;
   padding: 2em;

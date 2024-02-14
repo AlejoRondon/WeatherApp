@@ -5,16 +5,13 @@ export default async function fetchCurrentLocation() {
     } else {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const url1 = `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${process.env.REACT_APP_WEATHER_API}`;
-          (async () => {
-            try {
-              let response = await fetch(url1);
-              const data = await response.json();
+          fetchLocationByCoord({ lat: position.coords.latitude, lon: position.coords.longitude })
+            .then((data) => {
               return resolve(data[0]);
-            } catch (err) {
+            })
+            .catch((err) => {
               return reject(err);
-            }
-          })();
+            });
         },
         (error) => {
           reject(error);
@@ -22,4 +19,10 @@ export default async function fetchCurrentLocation() {
       );
     }
   });
+}
+
+export async function fetchLocationByCoord(position) {
+  const url1 = `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.lat}&lon=${position.lon}&appid=${process.env.REACT_APP_WEATHER_API}`;
+  let response = await fetch(url1);
+  return await response.json();
 }

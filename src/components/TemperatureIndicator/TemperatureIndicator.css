@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 2em;
-  border: dotted 1px white;
+  /* border: dotted 1px white; */
   height: 25%;
 }
 

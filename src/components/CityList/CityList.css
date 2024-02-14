@@ -1,11 +1,22 @@
 .CityList {
   position: relative;
-  overflow: hidden;
-  /* overflow: scroll; */
-  /* overflow-y: 'scroll'; */
-  /* height: 100%; */
-  /* height: 500px; */
-  /* z-index: 2; */
-  /* padding: 2em; */
-  border: 2px dashed darkgrey;
+  height: 90vh;
+  /* border: 1px dodgerblue dotted; */
+  z-index: 2;
+  overflow-y: scroll;
+  padding: 2em;
+}
+
+/* Custom scrollbar styling */
+.CityList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.CityList::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(88, 86, 118, 0.5);
+}
+
+.CityList::-webkit-scrollbar-thumb:hover {
+  background: rgba(88, 86, 118, 0.8);
 }

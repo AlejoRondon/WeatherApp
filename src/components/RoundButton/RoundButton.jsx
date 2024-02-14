@@ -1,10 +1,10 @@
 import React from 'react';
 import './RoundButton.css';
-function RoundButton({ children }) {
+function RoundButton({ children, onClickCurrentLocation }) {
   return (
-    <a href='hello' className='round-btn'>
+    <p className='round-btn' onClick={onClickCurrentLocation}>
       {React.Children.toArray(children)[0]}
-    </a>
+    </p>
   );
 }
 
