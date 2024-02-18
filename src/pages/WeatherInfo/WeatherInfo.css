@@ -16,8 +16,7 @@
   /* background-color: cadetblue; */
 }
 
-.temperature_buttons {
-  /* border: 1px darkcyan dashed; */
+.toogle-switch-wrapper {
   width: 70%;
   display: flex;
   justify-content: end;

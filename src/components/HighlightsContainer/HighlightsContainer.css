@@ -1,13 +1,34 @@
-.HighlightsContainer {
+.highlights-container {
+  position: relative;
+  width: 80%;
+}
+
+.highlights-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  /* padding: 1m; */
-  width: 70%;
+  width: 100%;
   /* border: 1px dotted white; */
-  /* grid-column-gap: 16px; */
-  grid-row-gap: 16px;
-  /* justify-content: center; */
-  justify-items: center;
+  gap: 1em;
+  /* justify-items: center; */
+  grid-template-columns: 1fr 1fr;
+}
+
+.highlights-section-title {
+  margin: 0.5em 0;
+  font-size: 1.5em;
+}
+
+/* all rules outside of @media queries apply to devices 1201px and above */
+
+@media (max-width: 1200px) {
+  /* rules here apply to devices from 993px to 1200px (inclusive) */
+}
+@media (max-width: 992px) {
+  /* rules here apply to devices from 769px to 992px (inclusive) */
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  /* rules here apply to devices from 0px to 768px (inclusive) */
 }

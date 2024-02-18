@@ -1,4 +1,5 @@
 .HighlightCard {
+  position: relative;
   padding: 2em 1em;
   /* margin: 1em 0; */
   display: flex;
@@ -7,7 +8,8 @@
   /* width: 350px; */
   /* width: calc(100% - 50px); */
   background-color: #1e213a;
-  width: 320px;
+  /* width: 320px; */
+  width: 100%;
 }
 
 .HighlightCard p.number {

@@ -7,7 +7,7 @@ function WeatherCard({ weather, temp_units }) {
     <div className='WeatherCard'>
       <p>{weather.dt.short_date_str}</p>
       <img src={`https://openweathermap.org/img/wn/${weather.icon}@4x.png`} />
-      <div className='max_min_temp_wrapper'>
+      <div className='max_min_temp_wrapper_'>
         <p className='max_temp'>
           {temp_max ? temp_max : '--'}
           {temp_units ? '°C' : '°F'}

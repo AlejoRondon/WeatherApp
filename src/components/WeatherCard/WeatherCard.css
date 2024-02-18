@@ -2,20 +2,18 @@
   /* background-color: aliceblue; */
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* padding: 1em; */
-  gap: 1em;
   /* border: 1px dashed cadetblue; */
   background-color: #1e213a;
+  padding: 2em 0;
 }
 
-.max_min_temp_wrapper {
+.max_min_temp_wrapper_ {
   display: flex;
-  width: 100%;
+  width: 50%;
   justify-content: space-between;
-  /* background-color: aliceblue; */
+  /* background-color: deepskyblue; */
 }
 
 .min_temp {
@@ -23,5 +21,7 @@
 }
 
 .WeatherCard img {
-  width: 150px;
+  /* width: 150px; */
+  width: 60%;
+  /* background-color: #a09fb1; */
 }
