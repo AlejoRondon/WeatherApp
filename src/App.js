@@ -68,6 +68,27 @@ function App() {
         setCurrentLocation(location);
       } catch (error) {
         console.error('Error getting location: ', error);
+        let default_location = {
+          name: 'Medellín',
+          local_names: {
+            ru: 'Медельин',
+            mk: 'Медељин',
+            oc: 'Medellín',
+            ar: 'ميديلين',
+            es: 'Medellín',
+            ur: 'میڈیئن',
+            en: 'Medellín',
+            fa: 'مدئین',
+            pt: 'Medellín',
+            uk: 'Медельїн',
+          },
+          lat: 6.2443382,
+          lon: -75.573553,
+          country: 'CO',
+          state: 'Antioquia',
+        };
+        setShownLocation(default_location);
+        setCurrentLocation(default_location);
       }
     })();
   }, []);
