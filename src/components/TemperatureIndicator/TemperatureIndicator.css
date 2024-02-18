@@ -2,18 +2,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 2em;
-  /* border: dotted 1px white; */
+  width: 80%;
   height: 25%;
+  margin: auto;
+  border: dotted 1px white;
 }
 
-.TemperatureIndicator p {
+.temp_number {
   text-align: center;
   font-size: 110px;
   color: #e7e7eb;
 }
 
-.TemperatureIndicator p span {
+.temp_symbol {
   color: #a09fb1;
   font-size: 44px;
 }
@@ -22,15 +23,29 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 2em 0.5em;
-  /* background-color: aliceblue; */
+  padding: 2em 0;
 }
 
 .TemperatureIndicator p.max_temp {
   font-size: 30px;
-  /* color: #a09fb1; */
 }
+
 .TemperatureIndicator p.min_temp {
   font-size: 30px;
   color: #a09fb1;
+}
+
+/* all rules outside of @media queries apply to devices 1201px and above */
+
+@media (max-width: 1200px) {
+  /* rules here apply to devices from 993px to 1200px (inclusive) */
+}
+@media (max-width: 992px) {
+  /* rules here apply to devices from 769px to 992px (inclusive) */
+  .TemperatureIndicator {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  /* rules here apply to devices from 0px to 768px (inclusive) */
 }

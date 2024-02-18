@@ -1,0 +1,19 @@
+.city-item {
+  position: relative;
+  /* padding: 1em; */
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.city-item:hover {
+  border: solid 1px #616475;
+}
+
+.city-item:hover::after {
+  position: absolute;
+  content: '>';
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #616475;
+}

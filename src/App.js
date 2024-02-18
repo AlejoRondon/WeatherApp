@@ -3,72 +3,61 @@ import './pages/WeatherToday/WeatherToday.css';
 import React, { useEffect, useState } from 'react';
 import WeatherTodayPage from './pages/WeatherToday/WeatherToday.jsx';
 import WeatherInfoPage from './pages/WeatherInfo/WeatherInfo.jsx';
-// eslint-disable-next-line
-import fetchCurrentLocation, { fetchLocationByCoord } from './services/LocationService';
 import SearchBar from './components/SearchBar/SearchBar';
+import fetchCurrentLocation, { fetchLocationByCoord } from './services/LocationService';
 import CloudsBackground from './components/CloudsBackground/CloudsBackground.jsx';
 import getCurrentDate, { unixTimeConverter } from './services/DateService';
 import fetchCurrentWeather, { fetchNextDaysWeather, fetchCurrentWeatherById } from './services/WeatherService';
 import CityList from './components/CityList/CityList.jsx';
-// eslint-disable-next-line
 
+// eslint-disable-next-line
 function App() {
   const [temp_units, SetTempUnits] = useState(true); //true: °C false: °F
   const [shown_location, setShownLocation] = useState();
-  // eslint-disable-next-line
   const [current_location, setCurrentLocation] = useState();
-  // eslint-disable-next-line
-  const [searched_city_location, setSearchedCityLocation] = useState();
   const [current_weather, SetCurrentWeather] = useState();
   const [next_days_weather, SetNextDaysWeather] = useState();
   const [date, setDate] = useState();
-  const [search_str, setSearchStr] = useState('');
-  const [searched_city, setSearchedCity] = useState();
+  const [searchStr, setSearchStr] = useState('');
 
   const handleChangeToggleSwitch = () => SetTempUnits((prev) => !prev);
+
+  const handleCurrentLocationClick = () => {
+    setShownLocation(current_location);
+  };
+
   const handleChangeSearchInput = (e) => {
     setSearchStr(e.target.value);
   };
+
   const handleKeyPressDownSearchInput = (e) => {
     if (e.keyCode === 13 || e.keyCode === 27) {
-      console.log('Enter key pressed');
+      // if either 'enter' or 'scape' is pressed the CityList is hidden
       setSearchStr('');
     }
   };
 
   const handleClickCityItem = (e) => {
-    setSearchedCity({ name: e.target.innerText, code: e.target.getAttribute('code') });
-    setSearchStr('');
-  };
+    let city_code = e.target.dataset.cityCode;
+    setSearchStr(''); // Clear the input -> hide the CityList
 
-  // eslint-disable-next-line
-  const handleCurrentLocationClick = () => {
-    console.log('going to current location');
-    setShownLocation(current_location);
-  };
-
-  useEffect(() => {
-    // console.log(search_str);
-  }, [search_str]);
-
-  useEffect(() => {
-    console.log(searched_city);
     (async () => {
-      if (searched_city) {
-        try {
-          let today_weather = await fetchCurrentWeatherById(searched_city.code);
-          console.log('Weather, id: ', today_weather);
-          fetchLocationByCoord(today_weather.coord).then((data) => {
-            console.log(data[0]);
-            setSearchedCityLocation(data[0]);
-            setShownLocation(data[0]);
-          });
-        } catch (error) {
-          console.error("Error getting Today's", error);
+      try {
+        // Fetch weather information by using the cityCode...
+        let weather_info = await fetchCurrentWeatherById(city_code);
+        if (weather_info.cod === '404') {
+          console.error("Error: it wasn't possible to get information of the city with code:", city_code);
+          return;
         }
+        // ... to get coords and fetch the city location object
+        let city_location = await fetchLocationByCoord(weather_info.coord);
+        console.log(city_location[0]);
+        setShownLocation(city_location[0]);
+      } catch (error) {
+        console.error('Error fetching information', error);
       }
     })();
-  }, [searched_city]);
+  };
 
   useEffect(() => {
     (async () => {
@@ -81,6 +70,12 @@ function App() {
         console.error('Error getting location: ', error);
       }
     })();
+  }, []);
+
+  useEffect(() => {
+    let current_date = getCurrentDate();
+    console.log('Current Date: ', current_date);
+    setDate(current_date);
   }, []);
 
   useEffect(() => {
@@ -125,55 +120,35 @@ function App() {
     })();
   }, [shown_location]);
 
-  useEffect(() => {
-    let current_date = getCurrentDate();
-    console.log('Current Date: ', current_date);
-    setDate(current_date);
-  }, []);
-
-  useEffect(() => {
-    // console.log('hola');
-  }, [date]);
-
-  useEffect(() => {
-    // const fetchCities = async () => {
-    //   try {
-    //     const response = await fetch('http://api.geonames.org/searchJSON?q=&country=&maxRows=1000&username=demo');
-    //     const data = await response.json();
-    //     const cityNames = data.geonames.map((city) => city.name);
-    //     setCities(cityNames);
-    //   } catch (error) {
-    //     console.error('Error fetching city data:', error);
-    //   }
-    // };
-    // fetchCities();
-  }, []);
-
   return (
     <main className='App'>
       <section id='primary-section'>
         <CloudsBackground></CloudsBackground>
         <SearchBar
-          search_str={search_str}
+          searchStr={searchStr}
           onChangeSearch={handleChangeSearchInput}
           onKeyPressSearch={handleKeyPressDownSearchInput}
           onClickCurrentLocation={handleCurrentLocationClick}
         ></SearchBar>
-        <CityList search_str={search_str} onClickCityItem={handleClickCityItem}></CityList>
+        <CityList
+          searchStr={searchStr}
+          style={{ display: `${searchStr ? 'block' : 'none'}` }}
+          onClickCityItem={handleClickCityItem}
+        ></CityList>
         <WeatherTodayPage
-          // style={{ display: 'none' }}
-          weather={current_weather}
           date={date}
           location={shown_location}
           temp_units={temp_units}
+          weather={current_weather}
+          style={{ display: `${!searchStr ? 'block' : 'none'}` }}
         ></WeatherTodayPage>
       </section>
       <section id='secondary-section'>
         <WeatherInfoPage
-          onChangeToggleSwitch={handleChangeToggleSwitch}
+          next_days_weather={next_days_weather}
           temp_units={temp_units}
           weather={current_weather}
-          next_days_weather={next_days_weather ? next_days_weather : null}
+          onChangeToggleSwitch={handleChangeToggleSwitch}
         ></WeatherInfoPage>
       </section>
     </main>

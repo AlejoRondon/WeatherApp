@@ -1,11 +1,11 @@
 import React from 'react';
 import './SearchInput.css';
 
-function SearchInput({ search_str, onChangeSearch, onKeyPressSearch }) {
+function SearchInput({ searchStr, onChangeSearch, onKeyPressSearch }) {
   return (
     <input
       className='SearchInput'
-      value={search_str}
+      value={searchStr}
       type='text'
       placeholder='Search for places'
       onChange={onChangeSearch}

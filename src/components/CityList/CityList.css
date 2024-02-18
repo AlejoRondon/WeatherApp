@@ -1,22 +1,26 @@
-.CityList {
+.city-list {
   position: relative;
   height: 90vh;
-  /* border: 1px dodgerblue dotted; */
   z-index: 2;
-  overflow-y: scroll;
   padding: 2em;
+  overflow-y: scroll;
+}
+
+.city-list ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 /* Custom scrollbar styling */
-.CityList::-webkit-scrollbar {
-  width: 8px;
+.city-list::-webkit-scrollbar {
+  width: 0.5em;
 }
 
-.CityList::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+.city-list::-webkit-scrollbar-thumb {
+  border-radius: 0.5em;
   background: rgba(88, 86, 118, 0.5);
 }
 
-.CityList::-webkit-scrollbar-thumb:hover {
+.city-list::-webkit-scrollbar-thumb:hover {
   background: rgba(88, 86, 118, 0.8);
 }

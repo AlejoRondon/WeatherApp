@@ -1,24 +1,23 @@
 import React from 'react';
 import './CityList.css';
-import CityListElement from '../CityListElement/CityListElement';
+import CityItem from '../CityItem/CityItem';
 
-function CityList({ search_str, onClickCityItem }) {
-  let filtered_cities = !search_str
-    ? cities
-    : cities.filter((e) => {
-        return e.name.toLowerCase().startsWith(search_str.toLowerCase());
-      });
+function CityList({ searchStr, onClickCityItem, style }) {
+  let filtered_cities = cities_list.filter((e) => {
+    return e.name.toLowerCase().startsWith(searchStr.toLowerCase());
+  });
+
   return (
-    <div className='SearchPage' style={{ display: `${search_str ? 'block' : 'none'}` }}>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+    <div className='city-list' style={style}>
+      <ul>
         {filtered_cities.length
-          ? filtered_cities.map((item, index) => (
-              <CityListElement
+          ? filtered_cities.map((city, index) => (
+              <CityItem
                 key={index}
-                city_name={item.name}
+                cityName={city.name}
                 onClickCityItem={onClickCityItem}
-                code={item.code}
-              ></CityListElement>
+                cityCode={city.code}
+              ></CityItem>
             ))
           : 'no element matches the search'}
       </ul>
@@ -28,7 +27,7 @@ function CityList({ search_str, onClickCityItem }) {
 
 export default CityList;
 
-const cities = [
+const cities_list = [
   { name: 'Kabul', code: 1138958 }, // Afghanistan
   { name: 'Tirana', code: 3183875 }, // Albania
   { name: 'Algiers', code: 2507480 }, // Algeria

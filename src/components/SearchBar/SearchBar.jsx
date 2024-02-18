@@ -2,11 +2,11 @@ import React from 'react';
 import './SearchBar.css';
 import SearchInput from '../SearchInput/SearchInput';
 import RoundButton from '../RoundButton/RoundButton';
-function SearchBar({ search_str, onChangeSearch, onKeyPressSearch, onClickCurrentLocation }) {
+function SearchBar({ searchStr, onChangeSearch, onKeyPressSearch, onClickCurrentLocation }) {
   return (
     <div className='SearchBar'>
       <SearchInput
-        search_str={search_str}
+        searchStr={searchStr}
         onChangeSearch={onChangeSearch}
         onKeyPressSearch={onKeyPressSearch}
       ></SearchInput>
